@@ -3,7 +3,7 @@ function reversePrint(linkedList) {
   // ...
 }
 
-var someList = {
+const someList = {
   value: 1,
   next: {
     value: 2,

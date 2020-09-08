@@ -1,24 +1,28 @@
-// Написать функцию с именем, inOrder которая принимает два обратных вызова и вызывает их по порядку.
-// Реализовать inOrder с помощью обратного вызова.
+// Написать функцию с именем, inOrder которая принимает рандомное кол-во синхронных и ассинхронных операций и последний аргумент результирующий колбэк
+// Сигнатура inOrder(operation, ..., cb)
+// Реализовать inOrder с помощью колбэков, не используя Promise и async\await.
+// Результат должен быть в виде массива в порядке передачи аргументов ['One', 'Two', 'Three', 'Four']
+
+// Сами синх\асинх операции можно оборачивать и делать с ними что угодно
 
 const logOne = setTimeout ( function () {
-  console.log ( "One" );
+  return "One";
 }, Math.random () * 1000 );
 
 const logTwo = setTimeout ( function () {
-  console.log ( "Two" );
+  return "Two";
 }, Math.random () * 1000 );
 
-inOrder(logOne, logTwo);
+const logThree = setTimeout ( function () {
+  return 'Three';
+}, 0 );
 
-function inOrder() {
-
+const logFour = () => {
+  return 'Four';
 }
 
-// One
-// Two
+inOrder(logOne, logTwo, logThree, logFour, result => console.log(result));
 
-// он всегда должен регистрировать эти два по порядку, независимо от их времени
-
-// Реализуйте простую версию Promise.all. Эта функция должна принимать массив обещаний и возвращать массив разрешенных значений.
-// Если какое-либо из обещаний отклонено, функция должна их уловить.
+function inOrder() {
+ // ...
+}
